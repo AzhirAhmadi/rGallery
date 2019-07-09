@@ -1,0 +1,13 @@
+    <% if flash[:notice]!=nil%>
+        <% flash[:notice].split(",").each do |item| %>
+            <!-- Show Errors-->
+            <div class="alert alert-success" ><%= item %></div>
+        <%end%>
+    <%end%>
+
+    <% if flash[:alert]!=nil%>
+        <% flash[:alert].split(",").each do |item| %>
+            <!-- Show Errors-->
+            <div class="alert alert-danger" ><%= item %></div>
+        <%end%>
+    <%end%>

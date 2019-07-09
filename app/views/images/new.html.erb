@@ -1,0 +1,28 @@
+<%= form_for  @image, :html => {:multipart => true} do |f| %>
+  <div class="form-group">
+    <%= f.label :image_title%>
+    <%= f.text_field :image_title, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :category%>
+    <%= f.select :category_id,
+        Category.all.collect {|item| [item.name,item.id]},
+        {:include_blank => "Select One"},
+        class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image_description %>
+    <%= f.text_field :image_description , class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image , class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :remote_image_url, "or image url" %>
+    <%= f.text_field :remote_image_url, class:"form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Submit", class: "btn btn-primary"%>
+  <%= link_to "cancel", images_path, class: "btn btn-defualt"%>
+<%end%>

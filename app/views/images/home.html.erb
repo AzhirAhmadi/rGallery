@@ -1,0 +1,28 @@
+<div id="gallery">
+    <h2>home Images</h2>
+    <%if @images.exists?%>
+        <% @images.each_slice(4) do |images_s4| %>
+            <div class="row">
+               <% images_s4.each do |image|%>
+                    <div class="col-md-3">
+                        <div class="photo photo-type-line">
+                            <a href="<%= image.image_url()%>"
+                            class="photo-hover"
+                            data-lightbox="img"
+                            data-title="<%= image.image_title%>">
+                                <div class="photo-info">
+                                    <div class="headline"><%= image.image_title%></div>
+                                    <div class="line"></div>
+                                    <div class="decs"><%= image.image_description%></div>
+                                </div>
+                                <div class="mask"></div>
+                            </a>
+                            <div class="photo-img"><%= image_tag image.image_url(:thumb)%></div>
+                        </div>
+                    </div>
+               <%end%>
+            </div>
+        <%end%>
+    <%end%>
+</div>
+

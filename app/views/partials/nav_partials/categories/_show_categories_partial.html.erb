@@ -1,0 +1,15 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="<%=categories_path%>" id="dropdown01" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">Categories</a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+        <%if @categories %>
+            <%@categories.each do |category|%>
+                <li><a class="dropdown-item" href="<%=category_path(category)%>"><%=category.name%></a></li>
+            <%end%>
+        <%else%>
+            <li><a class="dropdown-item" href="#">No CateGory Added</a></li>
+        <%end%>
+        <li class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="<%= categories_path %>">Manage</a></li>
+    </ul>
+</li>

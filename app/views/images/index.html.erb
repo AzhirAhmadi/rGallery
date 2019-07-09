@@ -1,0 +1,25 @@
+<div class="well">
+    <%if @images.exists? %>
+        <table class="table table-striped">
+            <tr>
+                <th>Category Title</th>                                
+                <th>Actions</th>                                
+            </tr>
+            <% @images.each do |image|%>
+                <tr>
+                    <th><%= image.image_title%></th>                                
+                    <th><a href="<%=edit_image_path(image)%>" class="btn btn-primary">Edit</a> <%= link_to "Delete",image_path(image), method: :delete, data:{confirm: "Are you sure? "} ,class: "btn btn-danger"%></th>                                
+                </tr>
+
+            <%end%>
+            <tr>
+                <th><a href="<%=new_image_path%>" class="btn btn-success">Add New</a></th>                                
+                <th></th>                                
+            </tr>
+        </table>
+        <%=will_paginate @images%>
+    <%else%>
+        <p>There is no category</p>
+    <%end%>
+</div>
+

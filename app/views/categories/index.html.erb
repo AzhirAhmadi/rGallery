@@ -1,0 +1,24 @@
+<div class="well">
+    <%if @categories.exists? %>
+        <table class="table table-striped">
+            <tr>
+                <th>Category Title</th>                                
+                <th>Actions</th>                                
+            </tr>
+            <% @categories.each do |category|%>
+                <tr>
+                    <th><%= category.name%></th>                                
+                    <th><a href="<%=edit_category_path(category)%>" class="btn btn-primary">Edit</a> <%= link_to "Delete",category_path(category), method: :delete, data:{confirm: "Are you sure? "} ,class: "btn btn-danger"%></th>                                
+                </tr>
+
+            <%end%>
+            <tr>
+                <th><a href="<%=new_category_path%>" class="btn btn-success">Add New</a></th>                                
+                <th></th>                                
+            </tr>
+        </table>
+        <%=will_paginate @categories%>
+    <%else%>
+        <p>There is no category</p>
+    <%end%>
+</div>
